@@ -16,11 +16,11 @@ public class UserController {
 
     @PostMapping("/register")
     public User registerUser(@Validated @RequestBody User user) {
-        return userService.saveUser(user);
+        return userService.registerUser(user); // Changed from saveUser to registerUser
     }
 
     @GetMapping("/{username}")
     public User getUser(@PathVariable String username) {
-        return userService.findByUsername(username);
+        return userService.findByUsername(username).orElse(null); // Handle Optional
     }
 }
